@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referidos - CryptoSocial Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#1a1a1a',
+                        darker: '#141414',
+                        gold: '#FFD700',
+                        'gold-light': '#FFE55C',
+                        'success': '#22c55e',
+                        'danger': '#ef4444',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #FFD700, #FFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-dark text-white min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-darker py-4 fixed w-full top-0 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="dashboard.html" class="flex items-center">
+                        <i class="fas fa-coins text-gold text-2xl mr-2"></i>
+                        <span class="text-xl font-bold gradient-text">CryptoSocial Pro</span>
+                    </a>
+                </div>
+
+                <!-- Right Navigation -->
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-xl text-gray-300 hover:text-gold">
+                        <i class="fas fa-bell"></i>
+                        <span class="absolute -mt-4 -mr-2 bg-gold text-dark text-xs rounded-full px-1.5">3</span>
+                    </a>
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 focus:outline-none">
+                            <img src="https://via.placeholder.com/40" alt="Profile" class="w-8 h-8 rounded-full border-2 border-gold">
+                            <span class="hidden md:block">Juan Pérez</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 pt-24">
+        <!-- Referrals Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold gradient-text">Sistema de Referidos</h1>
+            <p class="text-gray-400">Invita amigos y gana comisiones en 7 niveles</p>
+        </div>
+
+        <!-- Referral Link -->
+        <div class="bg-darker rounded-xl p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Tu Link de Referido</h2>
+            <div class="flex space-x-4">
+                <input 
+                    type="text" 
+                    value="https://cryptosocial.pro/ref/juanperez123" 
+                    class="flex-1 px-4 py-3 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white"
+                    readonly
+                >
+                <button class="px-6 py-3 bg-gold text-dark rounded-lg hover:bg-gold-light font-semibold">
+                    <i class="fas fa-copy mr-2"></i>Copiar
+                </button>
+            </div>
+        </div>
+
+        <!-- Earnings Overview -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Total Earnings -->
+            <div class="bg-darker rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold">Ganancias Totales</h3>
+                    <i class="fas fa-coins text-2xl text-gold"></i>
+                </div>
+                <div class="text-3xl font-bold gradient-text">2,345.67 USDT</div>
+                <p class="text-gray-400 mt-2">Desde el inicio</p>
+            </div>
+            <!-- Active Referrals -->
+            <div class="bg-darker rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold">Referidos Activos</h3>
+                    <i class="fas fa-users text-2xl text-gold"></i>
+                </div>
+                <div class="text-3xl font-bold">156</div>
+                <p class="text-gray-400 mt-2">En todos los niveles</p>
+            </div>
+            <!-- This Month -->
+            <div class="bg-darker rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold">Este Mes</h3>
+                    <i class="fas fa-chart-line text-2xl text-gold"></i>
+                </div>
+                <div class="text-3xl font-bold text-success">+345.20 USDT</div>
+                <p class="text-gray-400 mt-2">Marzo 2024</p>
+            </div>
+        </div>
+
+        <!-- Levels Overview -->
+        <div class="bg-darker rounded-xl p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-6">Comisiones por Nivel</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Level 1 -->
+                <div class="bg-dark rounded-lg p-4 border border-gold">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-gold font-semibold">Nivel 1</span>
+                        <span class="text-sm text-gray-400">10%</span>
+                    </div>
+                    <div class="text-2xl font-bold mb-2">450.00 USDT</div>
+                    <div class="text-sm text-gray-400">32 referidos directos</div>
+                </div>
+                <!-- Level 2 -->
+                <div class="bg-dark rounded-lg p-4 border border-gray-700">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-gold font-semibold">Nivel 2</span>
+                        <span class="text-sm text-gray-400">5%</span>
+                    </div>
+                    <div class="text-2xl font-bold mb-2">225.00 USDT</div>
+                    <div class="text-sm text-gray-400">45 referidos</div>
+                </div>
+                <!-- Level 3 -->
+                <div class="bg-dark rounded-lg p-4 border border-gray-700">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-gold font-semibold">Nivel 3</span>
+                        <span class="text-sm text-gray-400">3%</span>
+                    </div>
+                    <div class="text-2xl font-bold mb-2">135.00 USDT</div>
+                    <div class="text-sm text-gray-400">38 referidos</div>
+                </div>
+                <!-- Level 4-7 -->
+                <div class="bg-dark rounded-lg p-4 border border-gray-700">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-gold font-semibold">Niveles 4-7</span>
+                        <span class="text-sm text-gray-400">1%</span>
+                    </div>
+                    <div class="text-2xl font-bold mb-2">90.00 USDT</div>
+                    <div class="text-sm text-gray-400">41 referidos</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Income Simulator -->
+        <div class="bg-darker rounded-xl p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-6">Simulador de Ingresos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Simulator Inputs -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Número de Referidos Directos</label>
+                        <input type="number" value="4" min="1" max="100" class="w-full px-4 py-3 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Promedio de Actividad por Referido (USDT)</label>
+                        <input type="number" value="1000" min="100" class="w-full px-4 py-3 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white">
+                    </div>
+                    <button class="w-full px-6 py-3 bg-gold text-dark rounded-lg hover:bg-gold-light font-semibold">
+                        Calcular Ganancias
+                    </button>
+                </div>
+                <!-- Simulator Results -->
+                <div class="bg-dark rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4">Ganancias Potenciales</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Nivel 1 (10%)</span>
+                            <span class="font-bold">400.00 USDT</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Nivel 2 (5%)</span>
+                            <span class="font-bold">800.00 USDT</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Nivel 3 (3%)</span>
+                            <span class="font-bold">960.00 USDT</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Niveles 4-7 (1%)</span>
+                            <span class="font-bold">1,280.00 USDT</span>
+                        </div>
+                        <div class="border-t border-gray-700 pt-4">
+                            <div class="flex justify-between">
+                                <span class="font-semibold">Total Mensual</span>
+                                <span class="text-2xl font-bold gradient-text">3,440.00 USDT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Referral List -->
+        <div class="bg-darker rounded-xl p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold">Tus Referidos</h2>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 bg-dark text-gray-300 rounded-lg hover:text-gold">
+                        <i class="fas fa-filter mr-2"></i>Filtrar
+                    </button>
+                    <button class="px-4 py-2 bg-dark text-gray-300 rounded-lg hover:text-gold">
+                        <i class="fas fa-download mr-2"></i>Exportar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Referrals Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-left border-b border-gray-700">
+                            <th class="pb-4 text-gray-400">Usuario</th>
+                            <th class="pb-4 text-gray-400">Nivel</th>
+                            <th class="pb-4 text-gray-400">Fecha</th>
+                            <th class="pb-4 text-gray-400">Estado</th>
+                            <th class="pb-4 text-gray-400">Ganancias</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700">
+                        <tr class="hover:bg-dark">
+                            <td class="py-4">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://via.placeholder.com/32" alt="User" class="w-8 h-8 rounded-full">
+                                    <div>
+                                        <div class="font-medium">María García</div>
+                                        <div class="text-sm text-gray-400">Premium</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4">
+                                <span class="text-gold">Nivel 1</span>
+                            </td>
+                            <td class="py-4">15/03/2024</td>
+                            <td class="py-4">
+                                <span class="px-3 py-1 bg-success bg-opacity-20 text-success rounded-full text-sm">
+                                    Activo
+                                </span>
+                            </td>
+                            <td class="py-4 font-bold">125.50 USDT</td>
+                        </tr>
+                        <tr class="hover:bg-dark">
+                            <td class="py-4">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://via.placeholder.com/32" alt="User" class="w-8 h-8 rounded-full">
+                                    <div>
+                                        <div class="font-medium">Carlos Ruiz</div>
+                                        <div class="text-sm text-gray-400">Light</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4">
+                                <span class="text-gold">Nivel 2</span>
+                            </td>
+                            <td class="py-4">14/03/2024</td>
+                            <td class="py-4">
+                                <span class="px-3 py-1 bg-success bg-opacity-20 text-success rounded-full text-sm">
+                                    Activo
+                                </span>
+                            </td>
+                            <td class="py-4 font-bold">75.25 USDT</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-between items-center mt-6">
+                <div class="text-gray-400">
+                    Mostrando 1-2 de 156 referidos
+                </div>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 bg-dark text-gray-300 rounded-lg hover:text-gold disabled:opacity-50" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="px-4 py-2 bg-gold text-dark rounded-lg">1</button>
+                    <button class="px-4 py-2 bg-dark text-gray-300 rounded-lg hover:text-gold">2</button>
+                    <button class="px-4 py-2 bg-dark text-gray-300 rounded-lg hover:text-gold">3</button>
+                    <button class="px-4 py-2 bg-dark text-gray-300 rounded-lg hover:text-gold">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-darker mt-16 py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center text-gray-400">
+                <p>&copy; 2024 CryptoSocial Pro. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
