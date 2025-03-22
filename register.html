@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - CryptoSocial Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#1a1a1a',
+                        darker: '#141414',
+                        gold: '#FFD700',
+                        'gold-light': '#FFE55C',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #FFD700, #FFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-dark text-white min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="bg-darker py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center">
+                    <i class="fas fa-coins text-gold text-2xl mr-2"></i>
+                    <span class="text-xl font-bold gradient-text">CryptoSocial Pro</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Form -->
+    <div class="flex-grow flex items-center justify-center px-4 py-12">
+        <div class="bg-darker p-8 rounded-xl shadow-lg w-full max-w-md border border-gray-800">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold gradient-text mb-2">Crear Cuenta</h2>
+                <p class="text-gray-400">Únete a la red social del futuro</p>
+            </div>
+
+            <form class="space-y-6">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Nombre</label>
+                        <input 
+                            type="text" 
+                            class="w-full px-4 py-3 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white"
+                            placeholder="Tu nombre"
+                            required
+                        >
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Apellido</label>
+                        <input 
+                            type="text" 
+                            class="w-full px-4 py-3 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white"
+                            placeholder="Tu apellido"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                    <input 
+                        type="email" 
+                        class="w-full px-4 py-3 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white"
+                        placeholder="tu@email.com"
+                        required
+                    >
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">País</label>
+                    <select class="w-full px-4 py-3 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white">
+                        <option value="">Selecciona tu país</option>
+                        <option value="AR">Argentina</option>
+                        <option value="BO">Bolivia</option>
+                        <option value="CL">Chile</option>
+                        <option value="CO">Colombia</option>
+                        <option value="CR">Costa Rica</option>
+                        <option value="CU">Cuba</option>
+                        <option value="EC">Ecuador</option>
+                        <option value="SV">El Salvador</option>
+                        <option value="ES">España</option>
+                        <option value="GT">Guatemala</option>
+                        <option value="HN">Honduras</option>
+                        <option value="MX">México</option>
+                        <option value="NI">Nicaragua</option>
+                        <option value="PA">Panamá</option>
+                        <option value="PY">Paraguay</option>
+                        <option value="PE">Perú</option>
+                        <option value="PR">Puerto Rico</option>
+                        <option value="DO">República Dominicana</option>
+                        <option value="UY">Uruguay</option>
+                        <option value="VE">Venezuela</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Contraseña</label>
+                    <div class="relative">
+                        <input 
+                            type="password" 
+                            class="w-full px-4 py-3 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white"
+                            placeholder="••••••••"
+                            required
+                        >
+                        <button type="button" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gold">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                    <p class="mt-1 text-sm text-gray-400">Mínimo 8 caracteres, incluyendo números y símbolos</p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Confirmar Contraseña</label>
+                    <div class="relative">
+                        <input 
+                            type="password" 
+                            class="w-full px-4 py-3 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white"
+                            placeholder="••••••••"
+                            required
+                        >
+                        <button type="button" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gold">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Código de Referido (Opcional)</label>
+                    <input 
+                        type="text" 
+                        class="w-full px-4 py-3 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white"
+                        placeholder="Ingresa el código si tienes uno"
+                    >
+                </div>
+
+                <div class="flex items-start">
+                    <input type="checkbox" class="mt-1 w-4 h-4 bg-dark border-gray-700 rounded focus:ring-gold text-gold">
+                    <label class="ml-2 text-sm text-gray-300">
+                        Acepto los <a href="#" class="text-gold hover:text-gold-light">Términos y Condiciones</a> y la 
+                        <a href="#" class="text-gold hover:text-gold-light">Política de Privacidad</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full py-3 rounded-full bg-gold text-dark font-semibold hover:bg-gold-light transition-colors hover-scale">
+                    Crear Cuenta
+                </button>
+
+                <div class="relative my-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-700"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-darker text-gray-400">O regístrate con</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <button type="button" class="flex items-center justify-center px-4 py-2 border border-gray-700 rounded-lg hover:border-gold transition-colors">
+                        <i class="fab fa-google text-xl mr-2"></i>
+                        <span>Google</span>
+                    </button>
+                    <button type="button" class="flex items-center justify-center px-4 py-2 border border-gray-700 rounded-lg hover:border-gold transition-colors">
+                        <i class="fab fa-telegram text-xl mr-2"></i>
+                        <span>Telegram</span>
+                    </button>
+                </div>
+            </form>
+
+            <p class="mt-8 text-center text-gray-400">
+                ¿Ya tienes una cuenta? 
+                <a href="login.html" class="text-gold hover:text-gold-light font-semibold">Inicia Sesión</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-darker py-6">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <p>&copy; 2024 CryptoSocial Pro. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle password visibility for both password fields
+        document.querySelectorAll('.fa-eye').forEach(icon => {
+            icon.parentElement.addEventListener('click', function() {
+                const passwordInput = this.parentElement.querySelector('input');
+                const icon = this.querySelector('i');
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
