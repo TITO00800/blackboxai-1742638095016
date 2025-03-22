@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - CryptoSocial Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="js/main.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#1a1a1a',
+                        darker: '#141414',
+                        gold: '#FFD700',
+                        'gold-light': '#FFE55C',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #FFD700, #FFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-dark text-white min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-darker py-4 fixed w-full top-0 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-coins text-gold text-2xl mr-2"></i>
+                    <span class="text-xl font-bold gradient-text">CryptoSocial Pro</span>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 max-w-xl mx-8">
+                    <div class="relative w-full">
+                        <input type="text" 
+                            placeholder="Buscar en el Marketplace..." 
+                            class="w-full px-4 py-2 rounded-full bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white"
+                        >
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gold">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation Icons -->
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-xl text-gray-300 hover:text-gold">
+                        <i class="fas fa-bell"></i>
+                        <span class="absolute -mt-4 -mr-2 bg-gold text-dark text-xs rounded-full px-1.5">3</span>
+                    </a>
+                    <a href="#" class="text-xl text-gray-300 hover:text-gold">
+                        <i class="fas fa-envelope"></i>
+                        <span class="absolute -mt-4 -mr-2 bg-gold text-dark text-xs rounded-full px-1.5">5</span>
+                    </a>
+                    <div class="relative group">
+                        <button class="flex items-center space-x-2 focus:outline-none">
+                            <img src="https://placehold.co/40x40/1a1a1a/FFD700" alt="Profile" class="w-8 h-8 rounded-full border-2 border-gold">
+                            <div class="hidden md:block text-left">
+                                <span id="userDisplayName" class="block">Cargando...</span>
+                                <span id="accountType" class="text-xs text-gray-400">Cargando...</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div class="absolute right-0 mt-2 w-48 bg-darker border border-gray-700 rounded-lg shadow-lg hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-dark hover:text-gold">
+                                <i class="fas fa-user mr-2"></i>Perfil
+                            </a>
+                            <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-dark hover:text-gold">
+                                <i class="fas fa-cog mr-2"></i>Configuración
+                            </a>
+                            <hr class="border-gray-700">
+                            <a href="#" onclick="logout()" class="block px-4 py-2 text-gray-300 hover:bg-dark hover:text-gold">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 pt-24">
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar -->
+            <div class="md:w-1/4">
+                <div class="bg-darker rounded-xl p-4 sticky top-24">
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="dashboard.html" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-dark text-gray-300 hover:text-gold">
+                                <i class="fas fa-home text-xl"></i>
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-dark text-gold">
+                                <i class="fas fa-store text-xl"></i>
+                                <span>Marketplace</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-dark text-gray-300 hover:text-gold">
+                                <i class="fas fa-exchange-alt text-xl"></i>
+                                <span>P2P USDT</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-dark text-gray-300 hover:text-gold">
+                                <i class="fas fa-building text-xl"></i>
+                                <span>Páginas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-dark text-gray-300 hover:text-gold">
+                                <i class="fas fa-wallet text-xl"></i>
+                                <span>Monedero</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-dark text-gray-300 hover:text-gold">
+                                <i class="fas fa-users text-xl"></i>
+                                <span>Referidos</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="mt-6 p-4 bg-dark rounded-lg border border-gray-800">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-sm font-medium">Tu Balance</span>
+                            <i class="fas fa-eye text-gray-400 cursor-pointer hover:text-gold"></i>
+                        </div>
+                        <div class="text-2xl font-bold gradient-text mb-2">1,234.56 USDT</div>
+                        <div class="flex space-x-2">
+                            <button class="flex-1 px-3 py-2 bg-gold text-dark rounded-lg hover:bg-gold-light text-sm font-medium">
+                                Depositar
+                            </button>
+                            <button class="flex-1 px-3 py-2 border border-gold text-gold rounded-lg hover:bg-gold hover:text-dark text-sm font-medium">
+                                Retirar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="md:w-3/4">
+                <!-- Create Product -->
+                <div class="bg-darker rounded-xl p-6 mb-6">
+                    <h2 class="text-xl font-bold mb-4">Crear Nuevo Producto</h2>
+                    <form id="create-product-form" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Nombre del Producto</label>
+                                <input type="text" 
+                                    name="name"
+                                    class="w-full px-4 py-2 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white"
+                                    required
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Precio (USDT)</label>
+                                <input type="number" 
+                                    name="price"
+                                    step="0.01"
+                                    class="w-full px-4 py-2 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white"
+                                    required
+                                >
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Descripción</label>
+                            <textarea 
+                                name="description"
+                                rows="3"
+                                class="w-full px-4 py-2 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white resize-none"
+                                required
+                            ></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Imágenes</label>
+                            <div class="flex items-center space-x-4">
+                                <label class="flex-1 cursor-pointer">
+                                    <div class="w-full h-32 border-2 border-dashed border-gray-700 rounded-lg flex items-center justify-center hover:border-gold">
+                                        <div class="text-center">
+                                            <i class="fas fa-cloud-upload-alt text-2xl text-gray-400 mb-2"></i>
+                                            <p class="text-sm text-gray-400">Click para subir imágenes</p>
+                                        </div>
+                                    </div>
+                                    <input type="file" 
+                                        name="images"
+                                        accept="image/*"
+                                        multiple
+                                        class="hidden"
+                                        data-type="product"
+                                    >
+                                </label>
+                                <div id="image-preview-grid" class="flex-1 grid grid-cols-3 gap-2 h-32 overflow-y-auto hidden">
+                                    <!-- Image previews will be added here -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit" class="px-6 py-2 bg-gold text-dark rounded-lg hover:bg-gold-light font-medium">
+                                Publicar Producto
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="products-grid">
+                    <!-- Sample Product Card -->
+                    <div class="bg-darker rounded-xl overflow-hidden hover-scale">
+                        <img src="https://placehold.co/400x300" alt="Product" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-2">NFT Collection #123</h3>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">Una colección única de NFTs con diseños exclusivos y características especiales.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gold font-bold">500 USDT</span>
+                                <button class="px-4 py-2 bg-gold text-dark rounded-lg hover:bg-gold-light text-sm font-medium">
+                                    Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sample Product Card -->
+                    <div class="bg-darker rounded-xl overflow-hidden hover-scale">
+                        <img src="https://placehold.co/400x300" alt="Product" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-2">Crypto Art #456</h3>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">Arte digital inspirado en el mundo de las criptomonedas.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gold font-bold">750 USDT</span>
+                                <button class="px-4 py-2 bg-gold text-dark rounded-lg hover:bg-gold-light text-sm font-medium">
+                                    Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sample Product Card -->
+                    <div class="bg-darker rounded-xl overflow-hidden hover-scale">
+                        <img src="https://placehold.co/400x300" alt="Product" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg mb-2">Trading Course</h3>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">Curso completo de trading de criptomonedas para principiantes y avanzados.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gold font-bold">299 USDT</span>
+                                <button class="px-4 py-2 bg-gold text-dark rounded-lg hover:bg-gold-light text-sm font-medium">
+                                    Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
