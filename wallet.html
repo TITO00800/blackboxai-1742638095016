@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monedero USDT - CryptoSocial Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#1a1a1a',
+                        darker: '#141414',
+                        gold: '#FFD700',
+                        'gold-light': '#FFE55C',
+                        'success': '#22c55e',
+                        'danger': '#ef4444',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #FFD700, #FFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-dark text-white min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-darker py-4 fixed w-full top-0 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="dashboard.html" class="flex items-center">
+                        <i class="fas fa-coins text-gold text-2xl mr-2"></i>
+                        <span class="text-xl font-bold gradient-text">CryptoSocial Pro</span>
+                    </a>
+                </div>
+
+                <!-- Right Navigation -->
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-xl text-gray-300 hover:text-gold">
+                        <i class="fas fa-bell"></i>
+                        <span class="absolute -mt-4 -mr-2 bg-gold text-dark text-xs rounded-full px-1.5">3</span>
+                    </a>
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 focus:outline-none">
+                            <img src="https://via.placeholder.com/40" alt="Profile" class="w-8 h-8 rounded-full border-2 border-gold">
+                            <span class="hidden md:block">Juan Pérez</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 pt-24">
+        <!-- Wallet Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold gradient-text">Monedero USDT</h1>
+            <p class="text-gray-400">Gestiona tus fondos y transacciones</p>
+        </div>
+
+        <!-- Balance Card -->
+        <div class="bg-darker rounded-xl p-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Balance -->
+                <div class="col-span-2">
+                    <div class="mb-4">
+                        <span class="text-gray-400">Balance Total</span>
+                        <div class="flex items-center space-x-2">
+                            <h2 class="text-4xl font-bold gradient-text">1,234.56 USDT</h2>
+                            <button class="text-gray-400 hover:text-gold">
+                                <i class="fas fa-eye-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button class="px-6 py-3 bg-gold text-dark rounded-lg hover:bg-gold-light font-semibold flex items-center justify-center space-x-2">
+                            <i class="fas fa-download"></i>
+                            <span>Depositar</span>
+                        </button>
+                        <button class="px-6 py-3 border-2 border-gold text-gold rounded-lg hover:bg-gold hover:text-dark font-semibold flex items-center justify-center space-x-2">
+                            <i class="fas fa-upload"></i>
+                            <span>Retirar</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Quick Stats -->
+                <div class="bg-dark rounded-xl p-6">
+                    <div class="space-y-4">
+                        <div>
+                            <span class="text-gray-400">Ganancias por Referidos</span>
+                            <div class="text-xl font-bold text-success">+45.20 USDT</div>
+                        </div>
+                        <div>
+                            <span class="text-gray-400">Transacciones Completadas</span>
+                            <div class="text-xl font-bold text-white">28</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transaction History -->
+        <div class="bg-darker rounded-xl p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-semibold">Historial de Transacciones</h3>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 bg-dark text-gray-300 rounded-lg hover:text-gold">
+                        <i class="fas fa-filter mr-2"></i>Filtrar
+                    </button>
+                    <button class="px-4 py-2 bg-dark text-gray-300 rounded-lg hover:text-gold">
+                        <i class="fas fa-download mr-2"></i>Exportar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Transactions Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-left border-b border-gray-700">
+                            <th class="pb-4 text-gray-400">Tipo</th>
+                            <th class="pb-4 text-gray-400">Fecha</th>
+                            <th class="pb-4 text-gray-400">Descripción</th>
+                            <th class="pb-4 text-gray-400">Cantidad</th>
+                            <th class="pb-4 text-gray-400">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700">
+                        <tr class="hover:bg-dark">
+                            <td class="py-4">
+                                <span class="flex items-center text-success">
+                                    <i class="fas fa-arrow-down mr-2"></i>Depósito
+                                </span>
+                            </td>
+                            <td class="py-4">22/03/2024 14:30</td>
+                            <td class="py-4">Depósito vía P2P</td>
+                            <td class="py-4 text-success">+500.00 USDT</td>
+                            <td class="py-4">
+                                <span class="px-3 py-1 bg-success bg-opacity-20 text-success rounded-full text-sm">
+                                    Completado
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-dark">
+                            <td class="py-4">
+                                <span class="flex items-center text-danger">
+                                    <i class="fas fa-arrow-up mr-2"></i>Retiro
+                                </span>
+                            </td>
+                            <td class="py-4">21/03/2024 09:15</td>
+                            <td class="py-4">Retiro a Binance</td>
+                            <td class="py-4 text-danger">-200.00 USDT</td>
+                            <td class="py-4">
+                                <span class="px-3 py-1 bg-success bg-opacity-20 text-success rounded-full text-sm">
+                                    Completado
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-dark">
+                            <td class="py-4">
+                                <span class="flex items-center text-success">
+                                    <i class="fas fa-users mr-2"></i>Referido
+                                </span>
+                            </td>
+                            <td class="py-4">20/03/2024 16:45</td>
+                            <td class="py-4">Comisión de Referido</td>
+                            <td class="py-4 text-success">+25.00 USDT</td>
+                            <td class="py-4">
+                                <span class="px-3 py-1 bg-success bg-opacity-20 text-success rounded-full text-sm">
+                                    Completado
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-dark">
+                            <td class="py-4">
+                                <span class="flex items-center text-danger">
+                                    <i class="fas fa-shopping-cart mr-2"></i>Compra
+                                </span>
+                            </td>
+                            <td class="py-4">19/03/2024 11:20</td>
+                            <td class="py-4">Compra en Marketplace</td>
+                            <td class="py-4 text-danger">-150.00 USDT</td>
+                            <td class="py-4">
+                                <span class="px-3 py-1 bg-success bg-opacity-20 text-success rounded-full text-sm">
+                                    Completado
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-between items-center mt-6">
+                <div class="text-gray-400">
+                    Mostrando 1-4 de 28 transacciones
+                </div>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 bg-dark text-gray-300 rounded-lg hover:text-gold disabled:opacity-50" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="px-4 py-2 bg-gold text-dark rounded-lg">1</button>
+                    <button class="px-4 py-2 bg-dark text-gray-300 rounded-lg hover:text-gold">2</button>
+                    <button class="px-4 py-2 bg-dark text-gray-300 rounded-lg hover:text-gold">3</button>
+                    <button class="px-4 py-2 bg-dark text-gray-300 rounded-lg hover:text-gold">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Section -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-darker rounded-xl p-6">
+                <div class="flex items-center space-x-4 mb-4">
+                    <div class="text-3xl text-gold">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Seguridad de la Cuenta</h3>
+                        <p class="text-gray-400">Protege tus fondos con autenticación de dos factores</p>
+                    </div>
+                </div>
+                <button class="w-full px-6 py-3 bg-gold text-dark rounded-lg hover:bg-gold-light font-semibold">
+                    Configurar 2FA
+                </button>
+            </div>
+            <div class="bg-darker rounded-xl p-6">
+                <div class="flex items-center space-x-4 mb-4">
+                    <div class="text-3xl text-gold">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Verificación KYC</h3>
+                        <p class="text-gray-400">Verifica tu identidad para aumentar los límites de retiro</p>
+                    </div>
+                </div>
+                <button class="w-full px-6 py-3 border-2 border-gold text-gold rounded-lg hover:bg-gold hover:text-dark font-semibold">
+                    Completar Verificación
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-darker mt-16 py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center text-gray-400">
+                <p>&copy; 2024 CryptoSocial Pro. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
