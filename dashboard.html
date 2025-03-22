@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CryptoSocial Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="js/main.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#1a1a1a',
+                        darker: '#141414',
+                        gold: '#FFD700',
+                        'gold-light': '#FFE55C',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #FFD700, #FFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .story-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+        }
+        .story-circle-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid #1a1a1a;
+            overflow: hidden;
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-dark text-white min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-darker py-4 fixed w-full top-0 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-coins text-gold text-2xl mr-2"></i>
+                    <span class="text-xl font-bold gradient-text">CryptoSocial Pro</span>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 max-w-xl mx-8">
+                    <div class="relative w-full">
+                        <input type="text" 
+                            placeholder="Buscar en CryptoSocial Pro..." 
+                            class="w-full px-4 py-2 rounded-full bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white"
+                        >
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gold">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation Icons -->
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-xl text-gray-300 hover:text-gold">
+                        <i class="fas fa-bell"></i>
+                        <span class="absolute -mt-4 -mr-2 bg-gold text-dark text-xs rounded-full px-1.5">3</span>
+                    </a>
+                    <a href="#" class="text-xl text-gray-300 hover:text-gold">
+                        <i class="fas fa-envelope"></i>
+                        <span class="absolute -mt-4 -mr-2 bg-gold text-dark text-xs rounded-full px-1.5">5</span>
+                    </a>
+                    <div class="relative group">
+                        <button class="flex items-center space-x-2 focus:outline-none">
+                            <img src="https://placehold.co/40x40/1a1a1a/FFD700" alt="Profile" class="w-8 h-8 rounded-full border-2 border-gold">
+                            <div class="hidden md:block text-left">
+                                <span id="userDisplayName" class="block">Cargando...</span>
+                                <span id="accountType" class="text-xs text-gray-400">Cargando...</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div class="absolute right-0 mt-2 w-48 bg-darker border border-gray-700 rounded-lg shadow-lg hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-dark hover:text-gold">
+                                <i class="fas fa-user mr-2"></i>Perfil
+                            </a>
+                            <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-dark hover:text-gold">
+                                <i class="fas fa-cog mr-2"></i>Configuración
+                            </a>
+                            <hr class="border-gray-700">
+                            <a href="#" onclick="logout()" class="block px-4 py-2 text-gray-300 hover:bg-dark hover:text-gold">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 pt-24">
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar -->
+            <div class="md:w-1/4">
+                <div class="bg-darker rounded-xl p-4 sticky top-24">
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-dark text-gold">
+                                <i class="fas fa-home text-xl"></i>
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-dark text-gray-300 hover:text-gold">
+                                <i class="fas fa-store text-xl"></i>
+                                <span>Marketplace</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-dark text-gray-300 hover:text-gold">
+                                <i class="fas fa-exchange-alt text-xl"></i>
+                                <span>P2P USDT</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-dark text-gray-300 hover:text-gold">
+                                <i class="fas fa-building text-xl"></i>
+                                <span>Páginas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-dark text-gray-300 hover:text-gold">
+                                <i class="fas fa-wallet text-xl"></i>
+                                <span>Monedero</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-dark text-gray-300 hover:text-gold">
+                                <i class="fas fa-users text-xl"></i>
+                                <span>Referidos</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="mt-6 p-4 bg-dark rounded-lg border border-gray-800">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-sm font-medium">Tu Balance</span>
+                            <i class="fas fa-eye text-gray-400 cursor-pointer hover:text-gold"></i>
+                        </div>
+                        <div class="text-2xl font-bold gradient-text mb-2">1,234.56 USDT</div>
+                        <div class="flex space-x-2">
+                            <button class="flex-1 px-3 py-2 bg-gold text-dark rounded-lg hover:bg-gold-light text-sm font-medium">
+                                Depositar
+                            </button>
+                            <button class="flex-1 px-3 py-2 border border-gold text-gold rounded-lg hover:bg-gold hover:text-dark text-sm font-medium">
+                                Retirar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Feed -->
+            <div class="md:w-2/4">
+                <!-- Stories -->
+                <div class="bg-darker rounded-xl p-4 mb-6">
+                    <div class="flex space-x-4 overflow-x-auto pb-4">
+                        <!-- Add Story -->
+                        <div class="flex flex-col items-center min-w-[60px]">
+                            <div class="story-circle bg-dark flex items-center justify-center cursor-pointer hover:opacity-80">
+                                <i class="fas fa-plus text-gold text-xl"></i>
+                            </div>
+                            <span class="text-xs mt-2 text-gray-400">Crear</span>
+                        </div>
+                        <!-- Sample Stories -->
+                        <div class="flex flex-col items-center min-w-[60px]">
+                            <div class="story-circle cursor-pointer">
+                                <div class="story-circle-inner">
+                                    <img src="https://via.placeholder.com/60" alt="Story" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <span class="text-xs mt-2 text-gray-400">María</span>
+                        </div>
+                        <div class="flex flex-col items-center min-w-[60px]">
+                            <div class="story-circle cursor-pointer">
+                                <div class="story-circle-inner">
+                                    <img src="https://via.placeholder.com/60" alt="Story" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <span class="text-xs mt-2 text-gray-400">Carlos</span>
+                        </div>
+                        <div class="flex flex-col items-center min-w-[60px]">
+                            <div class="story-circle cursor-pointer">
+                                <div class="story-circle-inner">
+                                    <img src="https://via.placeholder.com/60" alt="Story" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <span class="text-xs mt-2 text-gray-400">Ana</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Create Post -->
+                <div class="bg-darker rounded-xl p-4 mb-6">
+                    <form id="create-post-form" class="space-y-4">
+                        <div class="flex space-x-4">
+                            <img id="user-avatar" src="https://placehold.co/40x40/1a1a1a/FFD700" alt="Profile" class="w-10 h-10 rounded-full">
+                            <div class="flex-1">
+                                <textarea 
+                                    name="content"
+                                    placeholder="¿Qué estás pensando?" 
+                                    class="w-full px-4 py-2 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white resize-none"
+                                    rows="2"
+                                ></textarea>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex space-x-4">
+                                <label class="flex items-center space-x-2 text-gray-400 hover:text-gold cursor-pointer">
+                                    <i class="fas fa-image"></i>
+                                    <span>Foto</span>
+                                    <input type="file" 
+                                        accept="image/*" 
+                                        class="hidden" 
+                                        data-type="post"
+                                        name="image"
+                                    >
+                                </label>
+                                <label class="flex items-center space-x-2 text-gray-400 hover:text-gold cursor-pointer">
+                                    <i class="fas fa-video"></i>
+                                    <span>Video</span>
+                                    <input type="file" 
+                                        accept="video/*" 
+                                        class="hidden" 
+                                        data-type="post"
+                                        name="video"
+                                    >
+                                </label>
+                                <div class="relative">
+                                    <button type="button" class="flex items-center space-x-2 text-gray-400 hover:text-gold" id="emoji-button">
+                                        <i class="fas fa-smile"></i>
+                                        <span>Emoji</span>
+                                    </button>
+                                    <div class="absolute top-full left-0 mt-2 bg-darker border border-gray-700 rounded-lg p-2 hidden" id="emoji-picker">
+                                        <!-- Emojis will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="px-6 py-2 bg-gold text-dark rounded-full hover:bg-gold-light font-medium">
+                                Publicar
+                            </button>
+                        </div>
+                        <div id="preview-container" class="hidden">
+                            <div class="relative">
+                                <img id="image-preview" src="" alt="Preview" class="w-full rounded-lg">
+                                <button type="button" class="absolute top-2 right-2 bg-dark bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75" onclick="removePreview()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Posts -->
+                <div class="space-y-6">
+                    <!-- Post 1 -->
+                    <div class="bg-darker rounded-xl p-4">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex space-x-3">
+                                <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full">
+                                <div>
+                                    <h3 class="font-semibold">María García</h3>
+                                    <p class="text-sm text-gray-400">Hace 2 horas</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gold">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                        <p class="mb-4">¡Increíble experiencia comerciando USDT en la plataforma! 🚀 #CryptoSocialPro #Trading</p>
+                        <img src="https://via.placeholder.com/600x400" alt="Post" class="w-full rounded-xl mb-4">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex space-x-4">
+                                <button class="flex items-center space-x-2 text-gray-400 hover:text-gold">
+                                    <i class="fas fa-heart"></i>
+                                    <span>2.5K</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-gray-400 hover:text-gold">
+                                    <i class="fas fa-comment"></i>
+                                    <span>128</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-gray-400 hover:text-gold">
+                                    <i class="fas fa-share"></i>
+                                    <span>45</span>
+                                </button>
+                            </div>
+                            <button class="text-gray-400 hover:text-gold">
+                                <i class="fas fa-bookmark"></i>
+                            </button>
+                        </div>
+                        <!-- Comments -->
+                        <div class="border-t border-gray-700 pt-4">
+                            <div class="flex space-x-3 mb-4">
+                                <img src="https://via.placeholder.com/32" alt="Profile" class="w-8 h-8 rounded-full">
+                                <div class="flex-1">
+                                    <div class="bg-dark rounded-lg p-3">
+                                        <h4 class="font-semibold">Carlos Ruiz</h4>
+                                        <p class="text-gray-300">¡Excelente! Yo también he tenido muy buenas experiencias. 👍</p>
+                                    </div>
+                                    <div class="flex space-x-4 mt-2 text-sm text-gray-400">
+                                        <button class="hover:text-gold">Me gusta</button>
+                                        <button class="hover:text-gold">Responder</button>
+                                        <span>Hace 1 hora</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add Comment -->
+                            <div class="flex space-x-3">
+                                <img src="https://via.placeholder.com/32" alt="Profile" class="w-8 h-8 rounded-full">
+                                <input type="text" 
+                                    placeholder="Escribe un comentario..." 
+                                    class="flex-1 px-4 py-2 rounded-lg bg-dark border border-gray-700 focus:border-gold focus:outline-none text-white"
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 2 -->
+                    <div class="bg-darker rounded-xl p-4">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex space-x-3">
+                                <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full">
+                                <div>
+                                    <h3 class="font-semibold">Pedro Martínez</h3>
+                                    <p class="text-sm text-gray-400">Hace 5 horas</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gold">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                        <p class="mb-4">Nueva colección disponible en el Marketplace. ¡No te la pierdas! 💎 #NFT #Crypto</p>
+                        <div class="grid grid-cols-2 gap-2 mb-4">
+                            <img src="https://via.placeholder.com/300" alt="NFT 1" class="w-full rounded-xl">
+                            <img src="https://via.placeholder.com/300" alt="NFT 2" class="w-full rounded-xl">
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex space-x-4">
+                                <button class="flex items-center space-x-2 text-gray-400 hover:text-gold">
+                                    <i class="fas fa-heart"></i>
+                                    <span>1.8K</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-gray-400 hover:text-gold">
+                                    <i class="fas fa-comment"></i>
+                                    <span>95</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-gray-400 hover:text-gold">
+                                    <i class="fas fa-share"></i>
+                                    <span>32</span>
+                                </button>
+                            </div>
+                            <button class="text-gray-400 hover:text-gold">
+                                <i class="fas fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="md:w-1/4">
+                <div class="bg-darker rounded-xl p-4 sticky top-24">
+                    <!-- Live Streams -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-4">En Vivo Ahora</h3>
+                        <div class="space-y-4">
+                            <div class="relative hover-scale cursor-pointer">
+                                <img src="https://via.placeholder.com/300x200" alt="Live Stream" class="w-full rounded-xl">
+                                <div class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                                    <i class="fas fa-circle text-xs mr-1"></i>
+                                    LIVE
+                                </div>
+                                <div class="absolute bottom-2 left-2 text-white">
+                                    <h4 class="font-medium">Trading en Vivo</h4>
+                                    <p class="text-sm">Ana Torres</p>
+                                </div>
+                                <div class="absolute bottom-2 right-2 text-white text-sm">
+                                    <i class="fas fa-eye mr-1"></i>
+                                    1.2K
+                                </div>
+                            </div>
+                            <button class="w-full py-2 bg-gold text-dark rounded-lg hover:bg-gold-light font-medium">
+                                Iniciar Transmisión
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Suggested Friends -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-4">Personas Sugeridas</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <h4 class="font-medium">Laura Sánchez</h4>
+                                        <p class="text-sm text-gray-400">12 amigos en común</p>
+                                    </div>
+                                </div>
+                                <button class="text-gold hover:text-gold-light">
+                                    <i class="fas fa-user-plus"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <h4 class="font-medium">Roberto Díaz</h4>
+                                        <p class="text-sm text-gray-400">8 amigos en común</p>
+                                    </div>
+                                </div>
+                                <button class="text-gold hover:text-gold-light">
+                                    <i class="fas fa-user-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trending Topics -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Tendencias</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-gold">#CryptoTrading</p>
+                                <p class="text-sm text-gray-400">2.5K posts</p>
+                            </div>
+                            <div>
+                                <p class="text-gold">#USDT</p>
+                                <p class="text-sm text-gray-400">1.8K posts</p>
+                            </div>
+                            <div>
+                                <p class="text-gold">#P2P</p>
+                                <p class="text-sm text-gray-400">950 posts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
